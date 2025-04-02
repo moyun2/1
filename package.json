@@ -4,12 +4,13 @@
     "description": "Backend service for DeepSeek API integration",
     "main": "server.js",
     "scripts": {
-      "build": "echo 'No build step required'",
-      "start": "node server.js"
+        "build": "echo 'No build step required'",
+        "start": "node server.js"
     },
     "dependencies": {
-      "express": "^4.18.2",
-      "axios": "^1.6.1",
-      "dotenv": "^16.3.1"
+        "axios": "^1.6.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2"
     }
-  }
+}

@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors'); // 引入 cors
 require('dotenv').config();
 
 const app = express();
@@ -8,6 +9,7 @@ const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 const DEEPSEEK_API_URL = 'https://api.deepseek.ai/v1/chat';
 
 app.use(express.json());
+app.use(cors()); // 使用 cors 中间件
 
 // 调用 DeepSeek API 的路由
 app.post('/api/deepseek', async (req, res) => {
