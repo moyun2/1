@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek API Demo</title>
+</head>
+<body>
+    <input type="text" id="userInput" placeholder="Enter your message">
+    <button onclick="sendMessage()">Send</button>
+    <div id="response"></div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput').value.trim();
+            if (!userInput) return;
+
+            try {
+                const response = await fetch('/.netlify/functions/deepseek', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userInput }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const result = await response.json();
+                document.getElementById('response').innerText = result.choices[0].message.content;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('response').innerText = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
