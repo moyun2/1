@@ -4,6 +4,7 @@
     "description": "Backend service for DeepSeek API integration",
     "main": "server.js",
     "scripts": {
+      "build": "echo 'No build step required'",
       "start": "node server.js"
     },
     "dependencies": {
