@@ -4,7 +4,16 @@ exports.handler = async (event, context) => {
   try {
     const { message } = JSON.parse(event.body);
     const apiKey = process.env.DEEPSEEK_API_KEY;
-    const apiUrl = 'https://api.deepseek.ai/v1/chat';
+    const apiUrl = 'https://api.deepseek.com/chat/completions';
+
+    console.log('API Key:', apiKey); // 添加日志输出，验证环境变量是否正确配置
+
+    if (!apiKey) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'API key is not configured' }),
+      };
+    }
 
     const response = await axios.post(
       apiUrl,
