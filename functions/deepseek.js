@@ -4,9 +4,16 @@ exports.handler = async (event, context) => {
   try {
     const { message } = JSON.parse(event.body);
     const apiKey = process.env.DEEPSEEK_API_KEY;
-    const apiUrl = 'https://api.deepseek.com/chat/completions';
+    const apiUrl = 'https://api.deepseek.ai/v1/chat';
 
-    console.log('API Key:', apiKey); // 添加日志输出，验证环境变量是否正确配置
+    console.log('API Key:', apiKey);
+    console.log('API URL:', apiUrl);
+    console.log('Request Body:', {
+      messages: [
+        { role: 'user', content: message },
+      ],
+      model: 'deepseek-chat-v1',
+    });
 
     if (!apiKey) {
       return {
