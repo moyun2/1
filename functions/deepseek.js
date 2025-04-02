@@ -4,7 +4,7 @@ exports.handler = async (event, context) => {
   try {
     const { message } = JSON.parse(event.body);
     const apiKey = process.env.DEEPSEEK_API_KEY;
-    const apiUrl = 'https://api.deepseek.ai/v1/chat';
+    const apiUrl = 'https://api.deepseek.com';
 
     console.log('API Key:', apiKey);
     console.log('API URL:', apiUrl);
